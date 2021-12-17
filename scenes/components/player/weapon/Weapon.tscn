@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/components/player/weapon/scripts/weapon.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/player/weapon/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/components/player/weapon/sounds/shot.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/components/player/weapon/ZoneShots.tscn" type="PackedScene" id=4]
+
+[node name="Weapon" type="Node2D"]
+light_mask = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+BulletScene = ExtResource( 2 )
+
+[node name="ZoneShots" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="Sprite" type="Polygon2D" parent="."]
+position = Vector2( 0, -32 )
+color = Color( 0, 0, 0, 0.196078 )
+offset = Vector2( 8, -16 )
+polygon = PoolVector2Array( -16, 16, -8, 16, 0, 16, 0, 48, -16, 48 )
+
+[node name="Shot" type="AudioStreamPlayer2D" parent="."]
+visible = false
+light_mask = 0
+stream = ExtResource( 3 )
+bus = "Effects"
+area_mask = 0

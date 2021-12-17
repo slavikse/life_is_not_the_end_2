@@ -1,0 +1,862 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://scenes/global/global_main.gd" type="Script" id=2]
+[ext_resource path="res://scenes/components/zones/backgrounds/textures/bg_light.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/blocks/exit/textures/opened.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/blocks/exit/textures/door.png" type="Texture" id=5]
+[ext_resource path="res://scenes/components/zones/backgrounds/textures/bg_black.png" type="Texture" id=6]
+[ext_resource path="res://brand.png" type="Texture" id=7]
+[ext_resource path="res://scenes/components/common/Control.tscn" type="PackedScene" id=8]
+[ext_resource path="res://fonts/PixelOperator8-Bold.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+extra_spacing_top = 6
+extra_spacing_bottom = 6
+font_data = ExtResource( 9 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0 )
+draw_center = false
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 0 )
+draw_center = false
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 0 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 0 )
+draw_center = false
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 0 )
+draw_center = false
+corner_detail = 1
+
+[sub_resource type="Theme" id=9]
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 4 )
+VScrollBar/styles/grabber_highlight = SubResource( 5 )
+VScrollBar/styles/grabber_pressed = SubResource( 6 )
+VScrollBar/styles/scroll = SubResource( 7 )
+VScrollBar/styles/scroll_focus = SubResource( 8 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 22
+outline_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 22
+outline_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 24
+outline_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 18
+outline_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 120
+font_data = ExtResource( 9 )
+
+[node name="Main" type="Node2D"]
+pause_mode = 2
+z_index = 1
+script = ExtResource( 2 )
+
+[node name="Ruler" type="Polygon2D" parent="."]
+visible = false
+position = Vector2( -33, -112 )
+z_index = 1
+color = Color( 0.811765, 0.847059, 0.862745, 1 )
+polygon = PoolVector2Array( 984, 256, 984, 8000, 992, 8000, 992, 256 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Menu" type="Node2D" parent="."]
+position = Vector2( -2, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="BackgroundLight" type="Sprite" parent="Menu"]
+position = Vector2( 848, 84 )
+scale = Vector2( 1000, 1000 )
+z_as_relative = false
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="BackgroundBlack" type="Sprite" parent="Menu"]
+visible = false
+position = Vector2( 396, 80 )
+scale = Vector2( 40, 15 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Camera" type="Camera2D" parent="Menu"]
+position = Vector2( 960, 540 )
+process_mode = 0
+smoothing_enabled = true
+smoothing_speed = 3.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="brand" type="Sprite" parent="Menu"]
+position = Vector2( 961, 540 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Title" type="Node2D" parent="Menu"]
+visible = false
+position = Vector2( 445, 98 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Name" type="Label" parent="Menu/Title"]
+margin_left = -148.0
+margin_top = 55.0
+margin_right = 512.0
+margin_bottom = 95.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "LIFE IS NOT THE END"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Brand" type="Label" parent="Menu/Title"]
+margin_left = 318.0
+margin_top = 126.0
+margin_right = 510.0
+margin_bottom = 150.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "- PIXSYNT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Actions" type="Node2D" parent="Menu"]
+position = Vector2( 825, 376 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Play" type="Button" parent="Menu/Actions"]
+margin_left = -39.0
+margin_top = 37.0
+margin_right = 137.0
+margin_bottom = 79.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "PLAY"
+flat = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Levels" type="Button" parent="Menu/Actions"]
+margin_left = -19.0
+margin_top = 82.0
+margin_right = 137.0
+margin_bottom = 124.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "LEVELS"
+flat = true
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="Menu/Actions"]
+margin_left = -37.0
+margin_top = 127.0
+margin_right = 137.0
+margin_bottom = 169.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "OPTIONS"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="Menu/Actions"]
+margin_left = -37.0
+margin_top = 172.0
+margin_right = 137.0
+margin_bottom = 214.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "CREDITS"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="Menu/Actions"]
+margin_left = 35.0
+margin_top = 217.0
+margin_right = 137.0
+margin_bottom = 259.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "EXIT"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tardis" type="Node2D" parent="Menu"]
+visible = false
+position = Vector2( 1408, 760 )
+scale = Vector2( 20, 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="opened" type="Sprite" parent="Menu/Tardis"]
+texture = ExtResource( 4 )
+
+[node name="door" type="Sprite" parent="Menu/Tardis"]
+texture = ExtResource( 5 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Menu"]
+visible = false
+position = Vector2( 90, 130 )
+polygon = PoolVector2Array( 816, 448, 776, 448, 776, 472, 816, 472 )
+
+[node name="Levels" type="Node2D" parent="."]
+position = Vector2( -1, 1500 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="BackgroundBlack" type="Sprite" parent="Levels"]
+position = Vector2( 401, 80 )
+scale = Vector2( 40, 15 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Camera" type="Camera2D" parent="Levels"]
+position = Vector2( 960, 540 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Return" type="Button" parent="Levels"]
+margin_left = 805.0
+margin_top = 215.0
+margin_right = 961.0
+margin_bottom = 257.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.14902, 0.196078, 0.219608, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "RETURN"
+flat = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Level_button_template" type="Button" parent="Levels"]
+visible = false
+margin_left = 770.0
+margin_top = 350.0
+margin_right = 946.0
+margin_bottom = 390.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_disabled = Color( 0.0627451, 0.12549, 0.152941, 1 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "LEVEL"
+flat = true
+align = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Complete" type="Polygon2D" parent="Levels/Level_button_template"]
+visible = false
+position = Vector2( -51.6545, -199.489 )
+scale = Vector2( 2.25989, 4.49978 )
+color = Color( 0.14902, 0.196078, 0.219608, 1 )
+polygon = PoolVector2Array( 26.3971, 48.111, 103.392, 48.111, 103.392, 48.9999, 26.3971, 48.9999 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Levels"]
+margin_left = 717.0
+margin_top = 414.0
+margin_right = 963.0
+margin_bottom = 1006.0
+size_flags_horizontal = 8
+size_flags_vertical = 2
+theme = SubResource( 9 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Levels/ScrollContainer"]
+margin_left = 246.0
+margin_right = 246.0
+margin_bottom = 592.0
+size_flags_horizontal = 10
+size_flags_vertical = 3
+
+[node name="Options" type="Node2D" parent="."]
+position = Vector2( 1, 3000 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="BackgroundBlack" type="Sprite" parent="Options"]
+position = Vector2( 401, 80 )
+scale = Vector2( 40, 15 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Camera" type="Camera2D" parent="Options"]
+position = Vector2( 960, 540 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Return" type="Button" parent="Options"]
+margin_left = 803.0
+margin_top = 215.0
+margin_right = 959.0
+margin_bottom = 257.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.14902, 0.196078, 0.219608, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "RETURN"
+flat = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AmbientVolumeTitle" type="Label" parent="Options"]
+margin_left = 802.0
+margin_top = 422.0
+margin_right = 954.0
+margin_bottom = 445.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+text = "AMBIENT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AmbientVolume" type="Button" parent="Options"]
+margin_left = 968.0
+margin_top = 419.0
+margin_right = 1024.0
+margin_bottom = 448.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "75"
+flat = true
+align = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="EffectsVolumeTitle" type="Label" parent="Options"]
+margin_left = 798.0
+margin_top = 460.0
+margin_right = 953.0
+margin_bottom = 483.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+text = "EFFECTS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="EffectsVolume" type="Button" parent="Options"]
+margin_left = 968.0
+margin_top = 457.0
+margin_right = 1024.0
+margin_bottom = 486.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "75"
+flat = true
+align = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ResetProgress" type="Button" parent="Options"]
+margin_left = 846.0
+margin_top = 841.0
+margin_right = 1167.0
+margin_bottom = 870.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "RESET PROGRESS "
+flat = true
+align = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ResetProgressStatus" type="Label" parent="Options"]
+margin_left = 974.0
+margin_top = 880.0
+margin_right = 1129.0
+margin_bottom = 903.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+text = "DELETED"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Control" parent="Options" instance=ExtResource( 8 )]
+position = Vector2( 822, 508 )
+z_index = 1
+z_as_relative = false
+
+[node name="Credits" type="Node2D" parent="."]
+position = Vector2( -1, 4500 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="BackgroundBlack" type="Sprite" parent="Credits"]
+position = Vector2( 401, 80 )
+scale = Vector2( 40, 15 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Camera" type="Camera2D" parent="Credits"]
+position = Vector2( 960, 540 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Return" type="Button" parent="Credits"]
+margin_left = 805.0
+margin_top = 215.0
+margin_right = 961.0
+margin_bottom = 257.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.14902, 0.196078, 0.219608, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "RETURN"
+flat = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Links" type="Node2D" parent="Credits"]
+position = Vector2( 0, 33 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="GodotLink" type="LinkButton" parent="Credits/Links"]
+margin_left = 835.0
+margin_top = 389.0
+margin_right = 955.0
+margin_bottom = 413.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+text = "GODOT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AbmientsLink" type="LinkButton" parent="Credits/Links"]
+margin_left = 766.0
+margin_top = 434.0
+margin_right = 955.0
+margin_bottom = 458.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+text = "AMBIENTS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EffectsLink" type="LinkButton" parent="Credits/Links"]
+margin_left = 787.0
+margin_top = 479.0
+margin_right = 955.0
+margin_bottom = 503.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+text = "EFFECTS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontLink" type="LinkButton" parent="Credits/Links"]
+margin_left = 859.0
+margin_top = 525.0
+margin_right = 955.0
+margin_bottom = 549.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+text = "FONT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="Credits"]
+visible = false
+position = Vector2( 78, 131 )
+polygon = PoolVector2Array( 792, 448, 768, 448, 768, 472, 792, 472 )
+
+[node name="GameEnd" type="Node2D" parent="."]
+position = Vector2( 0, 6000 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="BackgroundBlack" type="Sprite" parent="GameEnd"]
+position = Vector2( 401, 80 )
+scale = Vector2( 40, 15 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Camera" type="Camera2D" parent="GameEnd"]
+position = Vector2( 960, 540 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Return" type="Button" parent="GameEnd"]
+margin_left = 804.0
+margin_top = 217.0
+margin_right = 960.0
+margin_bottom = 255.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.14902, 0.196078, 0.219608, 1 )
+custom_colors/font_color_hover = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_colors/font_color_pressed = Color( 0.811765, 0.847059, 0.862745, 1 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "RETURN"
+flat = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Creator" type="Label" parent="GameEnd"]
+margin_left = 560.0
+margin_top = 371.0
+margin_right = 954.0
+margin_bottom = 398.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.0627451, 0.12549, 0.152941, 1 )
+text = "FROM THE CREATOR"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GameEnd"]
+margin_left = 560.0
+margin_top = 422.0
+margin_right = 952.0
+margin_bottom = 551.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "Thank you so much for playing my game! I hope you enjoyed the game! In the future, I will try to make games even better and more interesting!"
+align = 2
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="MENU" type="Label" parent="."]
+margin_left = -870.0
+margin_top = 446.0
+margin_right = -375.0
+margin_bottom = 566.0
+custom_fonts/font = SubResource( 14 )
+text = "MENU"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LEVELS" type="Label" parent="."]
+margin_left = -1102.0
+margin_top = 1950.0
+margin_right = -382.0
+margin_bottom = 2070.0
+custom_fonts/font = SubResource( 14 )
+text = "LEVELS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OPTIONS" type="Label" parent="."]
+margin_left = -1158.0
+margin_top = 3350.0
+margin_right = -348.0
+margin_bottom = 3470.0
+custom_fonts/font = SubResource( 14 )
+text = "OPTIONS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CREDITS" type="Label" parent="."]
+margin_left = -1110.0
+margin_top = 4918.0
+margin_right = -300.0
+margin_bottom = 5038.0
+custom_fonts/font = SubResource( 14 )
+text = "CREDITS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GAME_END" type="Label" parent="."]
+margin_left = -1230.0
+margin_top = 6406.0
+margin_right = -315.0
+margin_bottom = 6526.0
+custom_fonts/font = SubResource( 14 )
+text = "GAME END"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Menu/Actions/Play" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Menu/Actions/Levels" to="." method="_on_Levels_pressed"]
+[connection signal="pressed" from="Menu/Actions/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Menu/Actions/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Menu/Actions/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Levels/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Options/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Options/AmbientVolume" to="." method="_on_AmbientVolume_pressed"]
+[connection signal="pressed" from="Options/EffectsVolume" to="." method="_on_EffectsVolume_pressed"]
+[connection signal="pressed" from="Options/ResetProgress" to="." method="_on_ResetProgress_pressed"]
+[connection signal="pressed" from="Credits/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Credits/Links/GodotLink" to="." method="_on_GodotLink_pressed"]
+[connection signal="pressed" from="Credits/Links/AbmientsLink" to="." method="_on_AbmientsLink_pressed"]
+[connection signal="pressed" from="Credits/Links/EffectsLink" to="." method="_on_EffectsLink_pressed"]
+[connection signal="pressed" from="Credits/Links/FontLink" to="." method="_on_FontLink_pressed"]
+[connection signal="pressed" from="GameEnd/Return" to="." method="_on_Return_pressed"]

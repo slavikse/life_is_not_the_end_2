@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/components/road/spawn/spawn.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/road/spawn/textures/wireframe.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/road/spawn/textures/rise.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "on_animation_finished"
+} ]
+}
+
+[node name="Spawn" type="Area2D"]
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+collision_layer = 2048
+collision_mask = 2147484678
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Всю дорожку нужно пересобирать вручную.
+Клонировать нельзя, иначе не будут создаваться блоки."
+}
+
+[node name="Wireframe" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Rise" type="Sprite" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 3 )
+
+[node name="Animation" type="AnimationPlayer" parent="Rise"]
+autoplay = "Growth"
+anims/Growth = SubResource( 2 )
+[connection signal="area_entered" from="." to="." method="_on_Spawn_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Spawn_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Spawn_body_exited"]

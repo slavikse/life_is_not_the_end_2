@@ -1,0 +1,382 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/levels/level.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/zones/backgrounds/BackgroundDark.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/components/zones/force_zoom_out/ForceZoomOut.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/components/blocks/exit/Exit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/zones/game_area/GameArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/components/traps/shuriken/Shuriken.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/components/player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/components/blocks/activation/Activation.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/components/blocks/block/Block.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/components/zones/backgrounds/BackgroundLight.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/components/player/DeadPlayer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://fonts/PixelOperator8-Bold.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://scenes/components/common/Control.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/components/road/spawn/Spawn.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/components/road/Road.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/components/zones/track_catcher/TrackCatcher.tscn" type="PackedScene" id=16]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 12 )
+
+[node name="Level" type="Node2D"]
+position = Vector2( 0, 10000 )
+script = ExtResource( 1 )
+DeadPlayerScene = ExtResource( 11 )
+
+[node name="BackgroundLight" parent="." instance=ExtResource( 10 )]
+scale = Vector2( 1000, 1000 )
+
+[node name="BackgroundBlack" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="Activation" parent="." instance=ExtResource( 8 )]
+position = Vector2( -96, -688 )
+z_index = 1
+
+[node name="Exit" parent="." instance=ExtResource( 4 )]
+position = Vector2( -36, -720 )
+
+[node name="Bullets" type="Node2D" parent="."]
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="Zones" type="Node2D" parent="."]
+
+[node name="GameArea" parent="Zones" instance=ExtResource( 5 )]
+visible = false
+light_mask = 0
+position = Vector2( 296, -480 )
+scale = Vector2( 1, 1.16 )
+monitorable = false
+
+[node name="ForceZoomOut" parent="Zones" instance=ExtResource( 3 )]
+position = Vector2( -480, -872 )
+scale = Vector2( 5, 5 )
+
+[node name="TrackCatcher" parent="Zones" instance=ExtResource( 16 )]
+position = Vector2( -448, -528 )
+scale = Vector2( 2, 2 )
+
+[node name="Roads" type="Node2D" parent="."]
+
+[node name="Roads_01" type="Node2D" parent="Roads"]
+
+[node name="Spawn" parent="Roads/Roads_01" instance=ExtResource( 14 )]
+position = Vector2( 32, 80 )
+
+[node name="Road" parent="Roads/Roads_01" instance=ExtResource( 15 )]
+position = Vector2( 32, -16 )
+scale = Vector2( 1, 4 )
+road_direction = "top"
+
+[node name="Road2" parent="Roads/Roads_01" instance=ExtResource( 15 )]
+position = Vector2( -64, -176 )
+rotation = -1.5708
+scale = Vector2( 1, 4 )
+gravity_vec = Vector2( 0, 0 )
+road_direction = "left"
+
+[node name="Block21" parent="Roads/Roads_01/Road2" instance=ExtResource( 9 )]
+position = Vector2( 0, -8 )
+rotation = 1.57081
+scale = Vector2( 0.25, 1 )
+health = 3
+
+[node name="Road3" parent="Roads/Roads_01" instance=ExtResource( 15 )]
+position = Vector2( -224, -336 )
+scale = Vector2( 1, 6 )
+gravity_vec = Vector2( 0, 0 )
+road_direction = "top"
+
+[node name="Road6" parent="Roads/Roads_01" instance=ExtResource( 15 )]
+position = Vector2( -256, -560 )
+rotation = -1.5708
+scale = Vector2( 1, 2 )
+gravity_vec = Vector2( 0, 0 )
+road_direction = "left"
+
+[node name="Block14" parent="Roads/Roads_01/Road6" instance=ExtResource( 9 )]
+position = Vector2( 0, 16 )
+rotation = 1.5708
+scale = Vector2( 0.5, 1 )
+health = 4
+
+[node name="Roads_02" type="Node2D" parent="Roads"]
+
+[node name="Spawn" parent="Roads/Roads_02" instance=ExtResource( 14 )]
+position = Vector2( -352, 144 )
+
+[node name="Road" parent="Roads/Roads_02" instance=ExtResource( 15 )]
+position = Vector2( -352, 48 )
+scale = Vector2( 1, 4 )
+road_direction = "top"
+
+[node name="Road2" parent="Roads/Roads_02" instance=ExtResource( 15 )]
+position = Vector2( -448, -112 )
+rotation = -1.5708
+scale = Vector2( 1, 4 )
+road_direction = "left"
+
+[node name="Block20" parent="Roads/Roads_02/Road2" instance=ExtResource( 9 )]
+position = Vector2( 0, -8 )
+rotation = 1.5708
+scale = Vector2( 0.25, 1 )
+health = 2
+
+[node name="Road3" parent="Roads/Roads_02" instance=ExtResource( 15 )]
+position = Vector2( -608, -208 )
+scale = Vector2( 1, 4 )
+road_direction = "top"
+
+[node name="Road4" parent="Roads/Roads_02" instance=ExtResource( 15 )]
+position = Vector2( -512, -368 )
+rotation = 1.5708
+scale = Vector2( 1, 4 )
+road_direction = "right"
+
+[node name="Block20" parent="Roads/Roads_02/Road4" instance=ExtResource( 9 )]
+position = Vector2( 0, 8 )
+rotation = -1.5708
+scale = Vector2( 0.25, 1 )
+health = 4
+
+[node name="Road5" parent="Roads/Roads_02" instance=ExtResource( 15 )]
+position = Vector2( -352, -432 )
+scale = Vector2( 1, 3 )
+road_direction = "top"
+
+[node name="Roads_03" type="Node2D" parent="Roads"]
+
+[node name="Spawn" parent="Roads/Roads_03" instance=ExtResource( 14 )]
+position = Vector2( -864, -112 )
+
+[node name="Road" parent="Roads/Roads_03" instance=ExtResource( 15 )]
+position = Vector2( -864, -336 )
+scale = Vector2( 1, 8 )
+road_direction = "top"
+
+[node name="Block3" parent="Roads/Roads_03/Road" instance=ExtResource( 9 )]
+position = Vector2( 0, -12 )
+scale = Vector2( 1, 0.125 )
+health = 1
+
+[node name="Road2" parent="Roads/Roads_03" instance=ExtResource( 15 )]
+position = Vector2( -672, -624 )
+rotation = 1.5708
+scale = Vector2( 1, 7 )
+road_direction = "right"
+
+[node name="Roads_04" type="Node2D" parent="Roads"]
+
+[node name="Spawn" parent="Roads/Roads_04" instance=ExtResource( 14 )]
+position = Vector2( 224, 80 )
+
+[node name="Road" parent="Roads/Roads_04" instance=ExtResource( 15 )]
+position = Vector2( 224, -368 )
+scale = Vector2( 1, 15 )
+road_direction = "top"
+
+[node name="Block7" parent="Roads/Roads_04/Road" instance=ExtResource( 9 )]
+position = Vector2( 0, -4.26666 )
+scale = Vector2( 1, 0.0666667 )
+
+[node name="Road2" parent="Roads/Roads_04" instance=ExtResource( 15 )]
+position = Vector2( -32, -880 )
+rotation = -1.5708
+scale = Vector2( 1, 9 )
+road_direction = "left"
+
+[node name="Road3" parent="Roads/Roads_04" instance=ExtResource( 15 )]
+position = Vector2( -352, -784 )
+rotation = 3.14159
+scale = Vector2( 1, 4 )
+road_direction = "bottom"
+
+[node name="Blocks" type="Node2D" parent="."]
+z_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( -480, -432 )
+health = 2
+
+[node name="Block2" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( -32, -688 )
+health = 3
+
+[node name="Block6" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( -736, -304 )
+
+[node name="Block15" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( -160, -240 )
+health = 3
+
+[node name="Block16" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( -352, 208 )
+health = 4
+
+[node name="Block20" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( -864, -48 )
+health = 4
+
+[node name="Block17" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( -544, -176 )
+health = 3
+
+[node name="Block18" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( -544, -304 )
+health = 4
+
+[node name="Block19" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( -416, -432 )
+health = 4
+
+[node name="Block9" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 32, -688 )
+
+[node name="Block5" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( -416, -48 )
+
+[node name="Block10" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 32, 144 )
+health = 2
+
+[node name="Block4" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 96, 144 )
+health = 2
+
+[node name="Block8" parent="Blocks" instance=ExtResource( 9 )]
+position = Vector2( 224, 144 )
+health = 2
+
+[node name="Shurikens" type="Node2D" parent="."]
+z_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( -736, -360 )
+
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 96, 112 )
+
+[node name="Control" parent="." instance=ExtResource( 13 )]
+visible = false
+position = Vector2( -456, -128 )
+
+[node name="Tips" type="Node2D" parent="."]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Rerun" type="Label" parent="Tips"]
+margin_left = 65.0
+margin_top = 8.0
+margin_right = 129.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RerunCounter" type="Label" parent="Tips/Rerun"]
+margin_left = 16.0
+margin_top = -40.0
+margin_right = 241.0
+margin_bottom = -21.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "RERUN COUNTER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Label" parent="Tips"]
+margin_left = -423.0
+margin_top = -176.0
+margin_right = -279.0
+margin_bottom = -157.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "CONTROLS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OpeningDoor" type="Label" parent="Tips"]
+margin_left = 329.0
+margin_top = -120.0
+margin_right = 532.0
+margin_bottom = -101.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "OPENING DOOR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trap" type="Label" parent="Tips"]
+margin_left = 185.0
+margin_top = 88.0
+margin_right = 257.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "TRAP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextLevel" type="Label" parent="Tips"]
+margin_left = 321.0
+margin_top = 40.0
+margin_right = 492.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "DOOR FOR
+NEXT LEVEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DestroyedPlatforms" type="Label" parent="Tips"]
+margin_left = 9.0
+margin_top = 184.0
+margin_right = 174.0
+margin_bottom = 225.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "DESTROYED
+PLATFORMS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReductionZone" type="Label" parent="Tips"]
+margin_left = -159.0
+margin_top = -432.0
+margin_right = 80.0
+margin_bottom = -413.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+text = "REDUCTION ZONE"
+__meta__ = {
+"_edit_use_anchors_": false
+}

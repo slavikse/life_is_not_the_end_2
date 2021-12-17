@@ -1,0 +1,271 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "Activation",
+"language": "GDScript",
+"path": "res://scenes/components/blocks/activation/activation.gd"
+}, {
+"base": "StaticBody2D",
+"class": "Block",
+"language": "GDScript",
+"path": "res://scenes/components/blocks/block/scripts/block.gd"
+}, {
+"base": "Area2D",
+"class": "BlockTrackCatcher",
+"language": "GDScript",
+"path": "res://scenes/components/blocks/block/scripts/block_track_catcher.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://scenes/components/player/weapon/scripts/bullet.gd"
+}, {
+"base": "RigidBody2D",
+"class": "DeadPlayer",
+"language": "GDScript",
+"path": "res://scenes/components/player/scripts/dead_player.gd"
+}, {
+"base": "Area2D",
+"class": "Exit",
+"language": "GDScript",
+"path": "res://scenes/components/blocks/exit/scripts/exit.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://scenes/levels/level.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scenes/components/player/scripts/player.gd"
+}, {
+"base": "Area2D",
+"class": "Road",
+"language": "GDScript",
+"path": "res://scenes/components/road/road.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Shuriken",
+"language": "GDScript",
+"path": "res://scenes/components/traps/shuriken/shuriken.gd"
+}, {
+"base": "Area2D",
+"class": "Spawn",
+"language": "GDScript",
+"path": "res://scenes/components/road/spawn/spawn.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://scenes/components/player/weapon/scripts/weapon.gd"
+} ]
+_global_script_class_icons={
+"Activation": "",
+"Block": "",
+"BlockTrackCatcher": "",
+"Bullet": "",
+"DeadPlayer": "",
+"Exit": "",
+"Level": "",
+"Player": "",
+"Road": "",
+"Shuriken": "",
+"Spawn": "",
+"Weapon": ""
+}
+
+[application]
+
+config/name="Life Is Not The End 2"
+config/description="A randomly acquired life will be returned!"
+run/main_scene="res://scenes/Start.tscn"
+boot_splash/image="res://brand.png"
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0.14902, 0.196078, 0.219608, 1 )
+config/icon="res://favicon.png"
+config/windows_native_icon="res://favicon.ico"
+
+[autoload]
+
+GlobalController="*res://scenes/global/GlobalController.tscn"
+GlobalMain="*res://scenes/global/GlobalMain.tscn"
+GlobalState="*res://scenes/global/GlobalState.tscn"
+
+[debug]
+
+settings/crash_handler/message="Please include this when reporting the bug on pixsynt@yandex.ru"
+gdscript/completion/autocomplete_setters_and_getters=true
+gdscript/warnings/unused_class_variable=true
+gdscript/warnings/unsafe_property_access=true
+gdscript/warnings/unsafe_method_access=true
+gdscript/warnings/unsafe_cast=true
+gdscript/warnings/unsafe_call_argument=true
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/resizable=false
+window/size/fullscreen=true
+window/ios/hide_home_indicator=false
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[importer_defaults]
+
+ogg_vorbis={
+"loop": true,
+"loop_offset": 0
+}
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_select={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_cancel={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_focus_next={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_focus_prev={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_page_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_page_down={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_home={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_end={
+"deadzone": 0.5,
+"events": [  ]
+}
+player_transform={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+game_reload_current_scene={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_menu={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_arrow_top={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_arrow_bottom={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_enter={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+player_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+player_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+player_jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="ForceZoomOut"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="DeadPlayer"
+2d_physics/layer_4="Shuriken"
+2d_physics/layer_5="Bullet"
+2d_physics/layer_6="GameArea"
+2d_physics/layer_7="Block"
+2d_physics/layer_8="Activation"
+2d_physics/layer_9="Exit"
+2d_physics/layer_10="ZoneShots"
+2d_physics/layer_11="Road"
+2d_physics/layer_12="Spawn"
+2d_physics/layer_13="BlockBlocker"
+2d_physics/layer_14="TrackCatcher"
+2d_physics/layer_15="BlockTrackCatcher"
+2d_physics/layer_16="BlockDestruction"
+2d_physics/layer_17="-"
+2d_physics/layer_18="-"
+2d_physics/layer_19="-"
+2d_physics/layer_20="-"
+
+[physics]
+
+common/physics_fps=120
+
+[rendering]
+
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+2d/snapping/use_gpu_pixel_snap=true
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
+quality/filters/anisotropic_filter_level=1
+quality/subsurface_scattering/quality=2
+quality/depth/hdr=false
+quality/2d/use_pixel_snap=true

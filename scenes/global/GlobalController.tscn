@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/global/global_controller.gd" type="Script" id=1]
+
+[node name="GlobalController" type="Node2D"]
+z_index = 1
+z_as_relative = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Ambient" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+bus = "Ambient"

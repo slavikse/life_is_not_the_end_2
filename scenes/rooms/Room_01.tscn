@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/components/zones/force_zoom_out/ForceZoomOut.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/components/blocks/activation/Activation.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/components/blocks/block/Block.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/traps/shuriken/Shuriken.tscn" type="PackedScene" id=6]
+
+[node name="Room" type="Node2D"]
+
+[node name="Activation" parent="." instance=ExtResource( 3 )]
+position = Vector2( 608, 160 )
+
+[node name="Zones" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ForceZoomOut" parent="Zones" instance=ExtResource( 2 )]
+position = Vector2( 160, -288 )
+
+[node name="Blocks" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Block" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 224, -32 )
+health = 4
+
+[node name="Block2" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 32, -160 )
+health = 1
+
+[node name="Block3" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 288, -224 )
+health = 2
+
+[node name="Block9" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 96, -32 )
+
+[node name="Block13" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 96, -32 )
+
+[node name="Block6" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 224, 96 )
+health = 2
+
+[node name="Block10" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 96, 224 )
+health = 1
+
+[node name="Block11" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 416, 224 )
+health = 2
+
+[node name="Block7" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 352, 224 )
+health = 1
+
+[node name="Block12" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 480, 160 )
+health = 3
+
+[node name="Block15" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 608, -32 )
+health = 4
+
+[node name="Block8" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 480, -160 )
+health = 1
+
+[node name="Block4" parent="Blocks" instance=ExtResource( 4 )]
+position = Vector2( 544, 96 )
+
+[node name="Shurikens" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shuriken" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 223, -83 )
+
+[node name="Shuriken3" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 421, 173 )
+
+[node name="Shuriken4" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 596, -83 )
+
+[node name="Shuriken6" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 556, 45 )
+
+[node name="Shuriken2" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 37, -211 )
+
+[node name="Shuriken7" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 101, -83 )
+
+[node name="Shuriken5" parent="Shurikens" instance=ExtResource( 6 )]
+position = Vector2( 301, -275 )

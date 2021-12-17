@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/components/zones/force_zoom_out/force_zoom_out.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/zones/force_zoom_out/force_zoom_out.png" type="Texture" id=2]
+
+[node name="ForceZoomOut" type="Area2D"]
+light_mask = 0
+scale = Vector2( 3, 3 )
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+collision_mask = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+light_mask = 0
+position = Vector2( -24, 32 )
+polygon = PoolVector2Array( -8, -64, 56, -64, 56, 0, -8, 0 )
+[connection signal="body_entered" from="." to="." method="_on_ForceZoomOut_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_ForceZoomOut_body_exited"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/components/zones/backgrounds/textures/bg_dark.png" type="Texture" id=1]
+
+
+[node name="BackgroundDark" type="Sprite"]
+scale = Vector2( 200, 200 )
+z_as_relative = false
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}

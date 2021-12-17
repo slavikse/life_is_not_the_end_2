@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/swap_blocks.wav-6eb3b511f4ee9259db1741b21f091514.sample"
+
+[deps]
+
+source_file="res://scenes/components/blocks/block/sounds/swap_blocks.wav"
+dest_files=[ "res://.import/swap_blocks.wav-6eb3b511f4ee9259db1741b21f091514.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
