@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/levels/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundDark.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://scenes/components/road/spawn/Spawn.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/components/road/Road.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/components/zones/track_catcher/TrackCatcher.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/components/road/corner/Corner.tscn" type="PackedScene" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -69,6 +70,21 @@ scale = Vector2( 2, 2 )
 
 [node name="Roads_01" type="Node2D" parent="Roads"]
 
+[node name="Corners" type="Node2D" parent="Roads/Roads_01"]
+position = Vector2( 30, -176 )
+rotation = 1.5708
+scale = Vector2( 2, 2 )
+
+[node name="Corner" parent="Roads/Roads_01/Corners" instance=ExtResource( 17 )]
+position = Vector2( 0, -1 )
+
+[node name="Corner2" parent="Roads/Roads_01/Corners" instance=ExtResource( 17 )]
+position = Vector2( 0, 126 )
+rotation = 3.14159
+
+[node name="Corner3" parent="Roads/Roads_01/Corners" instance=ExtResource( 17 )]
+position = Vector2( -192, 127 )
+
 [node name="Spawn" parent="Roads/Roads_01" instance=ExtResource( 14 )]
 position = Vector2( 32, 80 )
 
@@ -110,6 +126,7 @@ scale = Vector2( 0.5, 1 )
 health = 4
 
 [node name="Roads_02" type="Node2D" parent="Roads"]
+visible = false
 
 [node name="Spawn" parent="Roads/Roads_02" instance=ExtResource( 14 )]
 position = Vector2( -352, 144 )
@@ -154,6 +171,7 @@ scale = Vector2( 1, 3 )
 road_direction = "top"
 
 [node name="Roads_03" type="Node2D" parent="Roads"]
+visible = false
 
 [node name="Spawn" parent="Roads/Roads_03" instance=ExtResource( 14 )]
 position = Vector2( -864, -112 )
@@ -175,6 +193,7 @@ scale = Vector2( 1, 7 )
 road_direction = "right"
 
 [node name="Roads_04" type="Node2D" parent="Roads"]
+visible = false
 
 [node name="Spawn" parent="Roads/Roads_04" instance=ExtResource( 14 )]
 position = Vector2( 224, 80 )

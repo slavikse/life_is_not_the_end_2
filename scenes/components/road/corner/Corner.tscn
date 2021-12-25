@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/components/road/corner/corner.png" type="Texture" id=1]
+
+[node name="Corner" type="Node2D"]
+z_index = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Corner" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}

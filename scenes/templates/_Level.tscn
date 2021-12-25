@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/levels/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundDark.tscn" type="PackedScene" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://scenes/components/road/spawn/Spawn.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/components/road/Road.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/components/zones/track_catcher/TrackCatcher.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/components/cannon/Cannon.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -78,6 +77,8 @@ position = Vector2( -96, 16 )
 position = Vector2( -96, -80 )
 scale = Vector2( 1, 4 )
 
+[node name="Corners" type="Node2D" parent="Roads/Roads_01/Road"]
+
 [node name="Block3" parent="Roads/Roads_01/Road" instance=ExtResource( 9 )]
 position = Vector2( 0, -8 )
 scale = Vector2( 1, 0.25 )
@@ -104,9 +105,6 @@ __meta__ = {
 [node name="Shuriken" parent="Shurikens" instance=ExtResource( 6 )]
 position = Vector2( 32, -227 )
 
-[node name="Cannon" parent="." instance=ExtResource( 16 )]
-position = Vector2( 0, -400 )
-
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 32, -16 )
 
@@ -125,12 +123,13 @@ autostart = true
 margin_top = -128.0
 margin_right = 64.0
 margin_bottom = -91.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.811765, 0.847059, 0.862745, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="timeout" from="Tips/RerunTime" to="." method="_on_RerunTime_timeout"]
