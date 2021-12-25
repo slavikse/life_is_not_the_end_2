@@ -5,7 +5,8 @@ class_name Player
 const FLOOR := Vector2.UP
 const OFFSET_NORMAL_SHAPE := 4 * 8
 const OFFSET_SMALL_SHAPE := 2 * 8
-const ADDITIONAL_JUMP_QUANTITY := 1
+const DEFAULT_JUMP_QUANTITY := 1
+const MAX_JUMP_QUANTITY := 2
 
 var move := preload('./movement/move.gd').new()
 var jump := preload('./movement/jump.gd').new()
@@ -17,6 +18,7 @@ var velocity := Vector2.ZERO;
 # Больше 1, когда стоит на поверхности. Когда в воздухе =0. Когда только что приземлился =1.
 var landed_counter := 0
 var jump_quantity := 0
+var max_jump_quantity := DEFAULT_JUMP_QUANTITY
 var is_can_zoom_out := true
 var is_level_complete := false
 
@@ -70,7 +72,7 @@ func jumping() -> void:
         jump_quantity = 0
         velocity.y = jump.jumping(velocity.y, shape.is_normal_shape)
 
-    elif Input.is_action_just_pressed('player_jump') and jump_quantity < ADDITIONAL_JUMP_QUANTITY:
+    elif Input.is_action_just_pressed('player_jump') and jump_quantity < max_jump_quantity:
         jump_quantity += 1
         velocity.y = jump.jumping(velocity.y, shape.is_normal_shape)
 
@@ -115,6 +117,12 @@ func zoom() -> void:
 
 
 func external_zoom_out(flag: bool) -> void:
+    if flag:
+        max_jump_quantity = DEFAULT_JUMP_QUANTITY
+
+    else:
+        max_jump_quantity = MAX_JUMP_QUANTITY
+
     is_can_zoom_out = flag
 
 
