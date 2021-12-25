@@ -36,12 +36,12 @@ tracks/1/keys = {
 }
 
 [node name="Spawn" type="Area2D"]
+collision_layer = 2048
+collision_mask = 2147484678
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0
 angular_damp = 0.0
-collision_layer = 2048
-collision_mask = 2147484678
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -58,11 +58,15 @@ shape = SubResource( 1 )
 
 [node name="Rise" type="Sprite" parent="."]
 scale = Vector2( 1e-05, 1e-05 )
+z_index = 1
 texture = ExtResource( 3 )
 
 [node name="Animation" type="AnimationPlayer" parent="Rise"]
 autoplay = "Growth"
 anims/Growth = SubResource( 2 )
+
+[node name="DelayReady" type="Timer" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_Spawn_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Spawn_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Spawn_body_exited"]

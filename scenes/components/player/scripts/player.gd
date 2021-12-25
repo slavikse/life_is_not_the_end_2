@@ -27,6 +27,7 @@ onready var scale_animation_node := $Scale as AnimationPlayer
 onready var move_animation_node := $Move as AnimationPlayer
 onready var floor_audio_node := $Floor as AudioStreamPlayer2D
 onready var zoom_audio_node := $Zoom as AudioStreamPlayer2D
+onready var delay_next_level_node := $DelayNextLevel as Timer
 
 
 func _ready() -> void:
@@ -134,7 +135,8 @@ func external_level_complete() -> void:
     yield(scale_animation_node, 'animation_finished')
     visible = false
 
-    yield(get_tree().create_timer(0.3), 'timeout')
+    delay_next_level_node.start(0.3)
+    yield(delay_next_level_node, 'timeout')
 
     if GlobalController:
         GlobalController.external_next_level()

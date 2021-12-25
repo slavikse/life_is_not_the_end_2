@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wireframe.png-473d509b2ec9d43abe12e339cff0e929.stex"
+path="res://.import/wireframe.png-7574b0b17af8787d24c21bbd613ed223.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/components/road/wireframe.png"
-dest_files=[ "res://.import/wireframe.png-473d509b2ec9d43abe12e339cff0e929.stex" ]
+source_file="res://scenes/components/road/textures/wireframe.png"
+dest_files=[ "res://.import/wireframe.png-7574b0b17af8787d24c21bbd613ed223.stex" ]
 
 [params]
 

@@ -9,6 +9,7 @@ onready var tardis_door_node := $Tardis/Door as Sprite
 onready var open_animation_node := $Open as AnimationPlayer
 onready var opening_audio_node := $Opening as AudioStreamPlayer
 onready var exit_audio_node := $Exit as AudioStreamPlayer2D
+onready var delay_play_node := $DelayPlay as Timer
 
 
 func external_open() -> void:
@@ -16,7 +17,9 @@ func external_open() -> void:
     tardis_opened_node.show()
     tardis_door_node.show()
 
-    yield(get_tree().create_timer(0.3), 'timeout')
+    delay_play_node.start(0.3)
+    yield(delay_play_node, 'timeout')
+
     opening_audio_node.play()
     open_animation_node.play('open')
 

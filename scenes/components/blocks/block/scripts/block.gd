@@ -6,6 +6,7 @@ export(int, 4) var health := 0
 export(PackedScene) var BlockDestroyScene: PackedScene
 
 const MAX_HEALTH := 5
+const BLOCK_BLOCKER_MASK := 4096
 var road: Area2D # Road
 var external_is_adding_block := false
 
@@ -35,7 +36,7 @@ func has_block_blocked() -> void:
     road = get_parent() as Area2D # Road
 
     if road:
-        collision_layer = 4096 # BlockBlocker
+        collision_layer = BLOCK_BLOCKER_MASK
         blocker_node.show()
 
 
@@ -61,7 +62,7 @@ func swap_blocks() -> void:
     var block_destroy_node := BlockDestroyScene.instance() as Node2D
     block_destroy_node.position = position
 
-    if collision_layer == 4096: # BlockBlocker
+    if collision_layer == BLOCK_BLOCKER_MASK:
         block_destroy_node.scale.x /= road.scale.x
         block_destroy_node.scale.y /= road.scale.y
 

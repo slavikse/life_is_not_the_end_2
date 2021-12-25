@@ -10,15 +10,11 @@ var self_road_direction := "idle"
 var self_spawn_position := Vector2.ZERO
 var external_road_id := get_instance_id()
 
-onready var wireframe_node := $Wireframe as Sprite
 onready var blocks_node := $"/root/Level/Blocks" as Node2D
 
 
 func _ready() -> void:
     self_road_direction = road_direction
-
-    if not Engine.editor_hint:
-        wireframe_node.hide()
 
 
 func _on_Road_body_entered(_block_blocker: Block) -> void:

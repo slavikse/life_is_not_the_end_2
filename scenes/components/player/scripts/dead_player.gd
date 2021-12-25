@@ -12,6 +12,7 @@ const DECREASE_ACCELERATION := 0.6
 onready var sprite_node := $Sprite as Sprite
 onready var collision_node := $Collision as CollisionPolygon2D
 onready var death_audio_node := $Death as AudioStreamPlayer2D
+onready var delay_reload_node := $DelayReload as Timer
 onready var player_node := $'/root/Level/Player' as Player
 
 
@@ -24,7 +25,8 @@ func _ready() -> void:
     else:
         position = Vector2(player_node.position.x, player_node.position.y - FOR_SMALL_SHAPE_CENTER_Y_GRAVITY)
 
-        # Сдвиги спрайта и коллайдера, чтобы их корректно центрировать и подстроить под малые размеры.
+        # Сдвиги спрайта и коллайдера, чтобы их корректно центрировать
+        # и подстроить под малые размеры.
         sprite_node.position.y = FOR_SMALL_SHAPE_POSITION_AND_COLLISION_Y
         sprite_node.scale = player_node.shape.NORMAL_SHAPE
 
@@ -33,5 +35,7 @@ func _ready() -> void:
 
     set_linear_velocity(player_node.velocity * DECREASE_ACCELERATION)
 
-    yield(get_tree().create_timer(1), 'timeout')
+    delay_reload_node.start(1)
+    yield(delay_reload_node, 'timeout')
+
     GlobalController.external_is_need_reload_level = true

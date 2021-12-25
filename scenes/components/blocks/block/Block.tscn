@@ -128,8 +128,12 @@ tracks/1/keys = {
 [node name="Block" type="StaticBody2D"]
 z_index = 1
 collision_layer = 2147483712
-collision_mask = 2147516446
+collision_mask = 32798
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 BlockDestroyScene = ExtResource( 7 )
 
 [node name="BlockTrackCatcher" type="Area2D" parent="."]

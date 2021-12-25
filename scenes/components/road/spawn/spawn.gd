@@ -7,6 +7,7 @@ var road: Road
 
 onready var wireframe_node := $Wireframe as Sprite
 onready var rise_animation_node := $Rise/Animation as AnimationPlayer
+onready var delay_ready_node := $DelayReady as Timer
 
 
 func _ready() -> void:
@@ -14,7 +15,8 @@ func _ready() -> void:
         wireframe_node.hide()
 
     # При разрушении блокировщика, пока Spawn не остановился - вызывало лишнее создание еще одного Spawn.
-    yield(get_tree().create_timer(0.2), "timeout")
+    delay_ready_node.start(0.2)
+    yield(delay_ready_node, 'timeout')
 
     # При разрушении блокирующего блока до того, как рост дойдёт до этой дорожки (блокер), то появляется лишний блок.
     if road:
@@ -36,7 +38,6 @@ func _exit_tree() -> void:
         GlobalState.roads_ids[road.external_road_id] = false
 
 
-# todo тут есть баг
 func _on_Spawn_area_entered(_road: Road) -> void:
     _road.external_set_spawn_position(position)
     road = _road

@@ -38,3 +38,5 @@ visible = false
 stream = ExtResource( 2 )
 bus = "Effects"
 area_mask = 2147483648
+
+[node name="DelayReload" type="Timer" parent="."]

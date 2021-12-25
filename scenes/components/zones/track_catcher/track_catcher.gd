@@ -6,12 +6,15 @@ var interpolate_speed := 0.2
 
 onready var tween_node := $Tween as Tween
 onready var hp_node := $HP as Sprite
+onready var delay_ready_node := $DelayReady as Timer
 onready var level_node := $"/root/Level" as Level
 
 
 func _ready() -> void:
     # Чтобы успели инициализироваться дорожки.
-    yield(get_tree().create_timer(0.2), "timeout")
+    delay_ready_node.start(0.2)
+    yield(delay_ready_node, 'timeout')
+
     max_roads_quantity = GlobalState.roads_quantity
 
 
