@@ -3,18 +3,18 @@
 [ext_resource path="res://scenes/levels/level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundDark.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/components/zones/force_zoom_out/ForceZoomOut.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/components/blocks/exit/Exit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/exit/Exit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/components/zones/game_area/GameArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/components/traps/shuriken/Shuriken.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/components/player/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/components/blocks/activation/Activation.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/components/blocks/block/Block.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/components/activation/Activation.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/components/block/Block.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/components/zones/backgrounds/BackgroundLight.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/components/player/DeadPlayer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://fonts/PixelOperator8-Bold.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://scenes/components/road/spawn/Spawn.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/components/road/Road.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/components/zones/track_catcher/TrackCatcher.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/components/track_catcher/TrackCatcher.tscn" type="PackedScene" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -35,15 +35,11 @@ visible = false
 position = Vector2( 32, 16 )
 z_index = 1
 
+[node name="TrackCatcher" parent="." instance=ExtResource( 15 )]
+position = Vector2( -128, -208 )
+
 [node name="Exit" parent="." instance=ExtResource( 4 )]
 position = Vector2( 220, -80 )
-
-[node name="Bullets" type="Node2D" parent="."]
-z_index = 1
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="Rooms" type="Node2D" parent="."]
 __meta__ = {
@@ -62,9 +58,6 @@ monitorable = false
 
 [node name="ForceZoomOut" parent="Zones" instance=ExtResource( 3 )]
 position = Vector2( 160, -304 )
-
-[node name="TrackCatcher" parent="Zones" instance=ExtResource( 15 )]
-position = Vector2( -128, -208 )
 
 [node name="Roads" type="Node2D" parent="."]
 
@@ -104,6 +97,13 @@ __meta__ = {
 
 [node name="Shuriken" parent="Shurikens" instance=ExtResource( 6 )]
 position = Vector2( 32, -227 )
+
+[node name="Bullets" type="Node2D" parent="."]
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 32, -16 )

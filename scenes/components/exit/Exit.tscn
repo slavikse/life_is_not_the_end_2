@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/components/exit/scripts/exit.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/exit/textures/opened.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/exit/sounds/opening.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/components/exit/textures/closed.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/exit/sounds/exit.wav" type="AudioStream" id=5]
+[ext_resource path="res://scenes/components/exit/textures/door.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 8 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Tardis/Door:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
+}
+
+[node name="Exit" type="Area2D"]
+z_index = 1
+collision_layer = 256
+collision_mask = 2147483650
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": ""
+}
+
+[node name="Tardis" type="Node2D" parent="."]
+position = Vector2( -2, 0 )
+scale = Vector2( 3, 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Closed" type="Sprite" parent="Tardis"]
+position = Vector2( 2, 0 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -16 )
+
+[node name="Opened" type="Sprite" parent="Tardis"]
+visible = false
+position = Vector2( 2, -2.98023e-08 )
+texture = ExtResource( 2 )
+offset = Vector2( -1.19209e-07, -16 )
+
+[node name="Door" type="Sprite" parent="Tardis"]
+visible = false
+position = Vector2( -2, -12 )
+texture = ExtResource( 9 )
+offset = Vector2( 4, -4 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 4, -17 )
+shape = SubResource( 1 )
+
+[node name="Open" type="AnimationPlayer" parent="."]
+anims/open = SubResource( 2 )
+
+[node name="Opening" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+mix_target = 1
+bus = "Effects"
+
+[node name="Exit" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource( 5 )
+bus = "Effects"
+area_mask = 0
+
+[node name="DelayPlay" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_Exit_body_entered"]

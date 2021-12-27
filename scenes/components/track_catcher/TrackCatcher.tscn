@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/components/track_catcher/track_catcher.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/track_catcher/track_catcher.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/block/textures/hp.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 42.1053, 42.1053 )
+
+[node name="TrackCatcher" type="Area2D"]
+collision_layer = 8192
+collision_mask = 2147500032
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "НИЧЕГО не приближать к этому блоку.
+"
+}
+
+[node name="Platform" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 2147483678
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="Platform"]
+visible = false
+position = Vector2( 32, -32 )
+shape = SubResource( 1 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 32, -32 )
+scale = Vector2( 0.95, 0.95 )
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="HP" type="Sprite" parent="."]
+position = Vector2( 32, -32 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+offset = Vector2( 16, -16 )
+
+[node name="DelayReady" type="Timer" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_TrackCatcher_area_entered"]

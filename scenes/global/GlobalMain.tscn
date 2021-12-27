@@ -2,8 +2,8 @@
 
 [ext_resource path="res://scenes/global/global_main.gd" type="Script" id=2]
 [ext_resource path="res://scenes/components/zones/backgrounds/textures/bg_light.png" type="Texture" id=3]
-[ext_resource path="res://scenes/components/blocks/exit/textures/opened.png" type="Texture" id=4]
-[ext_resource path="res://scenes/components/blocks/exit/textures/door.png" type="Texture" id=5]
+[ext_resource path="res://scenes/components/exit/textures/opened.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/exit/textures/door.png" type="Texture" id=5]
 [ext_resource path="res://scenes/components/zones/backgrounds/textures/bg_black.png" type="Texture" id=6]
 [ext_resource path="res://brand.png" type="Texture" id=7]
 [ext_resource path="res://scenes/components/common/Control.tscn" type="PackedScene" id=8]
