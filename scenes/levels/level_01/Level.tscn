@@ -112,12 +112,6 @@ scale = Vector2( 1, 2 )
 gravity_vec = Vector2( 0, 0 )
 road_direction = "left"
 
-[node name="Block14" parent="Roads/Roads_01/Road6" instance=ExtResource( 9 )]
-position = Vector2( 0, 16 )
-rotation = 1.5708
-scale = Vector2( 0.5, 1 )
-health = 4
-
 [node name="Roads_02" type="Node2D" parent="Roads"]
 
 [node name="Spawn" parent="Roads/Roads_02" instance=ExtResource( 14 )]

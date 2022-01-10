@@ -1,12 +1,15 @@
 extends Area2D
 
-var max_roads_quantity := -1.0
-var hp_node_scale := 2.0
-var interpolate_speed := 0.2
+const FILL_INIT_SCALE := 0.4
+const FILL_MAX_SCALE := 2.3
+const INTERPOLATE_SPEED := 0.2
 
-onready var tween_node := $Tween as Tween
-onready var hp_node := $HP as Sprite
+var max_roads_quantity := -1.0
+
 onready var delay_ready_node := $DelayReady as Timer
+onready var tween_node := $Tween as Tween
+onready var cannon_node := $Cannon as Node2D
+onready var fill_node := $Cannon/Fill as Sprite
 onready var level_node := $"/root/Level" as Level
 
 
@@ -18,22 +21,29 @@ func _ready() -> void:
     max_roads_quantity = GlobalState.roads_quantity
 
 
+func _physics_process(delta: float) -> void:
+    cannon_node.rotate(delta * (6 - GlobalState.roads_quantity))
+
+
 func _on_TrackCatcher_area_entered(block: BlockTrackCatcher) -> void:
     if block:
         GlobalState.roads_quantity -= 1
 
         if GlobalState.roads_quantity == 0:
-            interpolate(hp_node_scale)
+            interpolate_mass(FILL_MAX_SCALE)
             level_node.external_can_activate_exit("track_catcher")
 
         else:
-            interpolate((max_roads_quantity - GlobalState.roads_quantity) / max_roads_quantity)
+            interpolate_mass(
+                FILL_INIT_SCALE
+                + (max_roads_quantity - GlobalState.roads_quantity)
+                / max_roads_quantity)
 
 
-func interpolate(size: float) -> void:
+func interpolate_mass(size: float) -> void:
     #warning-ignore:RETURN_VALUE_DISCARDED
-    tween_node.interpolate_property(hp_node, "scale",
-        hp_node.scale, Vector2(size, size), interpolate_speed,
+    tween_node.interpolate_property(fill_node, "scale",
+        fill_node.scale, Vector2(size, size), INTERPOLATE_SPEED,
         Tween.TRANS_LINEAR, Tween.TRANS_LINEAR)
 
     #warning-ignore:RETURN_VALUE_DISCARDED
